@@ -8,20 +8,48 @@
 
 /* Begin PBXBuildFile section */
 		0432AB9F2304283D00A54096 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432AB9E2304283D00A54096 /* AppDelegate.swift */; };
-		0432ABA12304283D00A54096 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432ABA02304283D00A54096 /* ViewController.swift */; };
+		0432ABA12304283D00A54096 /* HomeVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0432ABA02304283D00A54096 /* HomeVC.swift */; };
 		0432ABA42304283D00A54096 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0432ABA22304283D00A54096 /* Main.storyboard */; };
 		0432ABA62304283F00A54096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0432ABA52304283F00A54096 /* Assets.xcassets */; };
 		0432ABA92304283F00A54096 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0432ABA72304283F00A54096 /* LaunchScreen.storyboard */; };
+		043D4A3A23066B8800B1F3D0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3923066B8800B1F3D0 /* User.swift */; };
+		043D4A3E2306765A00B1F3D0 /* CompanySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */; };
+		043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */; };
+		043D4A642307D9C300B1F3D0 /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A632307D9C300B1F3D0 /* AddNewUserVC.swift */; };
+		043D4A662308F88D00B1F3D0 /* Kintai.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A652308F88D00B1F3D0 /* Kintai.swift */; };
+		0482EDAF230A7AB4008EB07A /* TalkEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482EDAE230A7AB4008EB07A /* TalkEntryCell.swift */; };
+		04969F9423065190008ACBFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04969F9323065190008ACBFF /* GoogleService-Info.plist */; };
+		04CBDAFC230522EC00717869 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFB230522EC00717869 /* LoginVC.swift */; };
+		04CBDAFE2305380400717869 /* UserSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFD2305380400717869 /* UserSelectionVC.swift */; };
+		04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFF230538F900717869 /* UserSelectionCell.swift */; };
+		04CBDB0923053E0300717869 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0823053E0300717869 /* Key.swift */; };
+		04CBDB0D23053EB400717869 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0C23053EB400717869 /* Text.swift */; };
+		3D069CC22CA651793386BF59 /* Pods_NXWorkspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014DEE1BDB6919380ADB93A8 /* Pods_NXWorkspace.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		014DEE1BDB6919380ADB93A8 /* Pods_NXWorkspace.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_NXWorkspace.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0432AB9B2304283D00A54096 /* NXWorkspace.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = NXWorkspace.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0432AB9E2304283D00A54096 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		0432ABA02304283D00A54096 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		0432ABA02304283D00A54096 /* HomeVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeVC.swift; sourceTree = "<group>"; };
 		0432ABA32304283D00A54096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		0432ABA52304283F00A54096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0432ABA82304283F00A54096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0432ABAA2304283F00A54096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		043D4A3923066B8800B1F3D0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionCell.swift; sourceTree = "<group>"; };
+		043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionVC.swift; sourceTree = "<group>"; };
+		043D4A632307D9C300B1F3D0 /* AddNewUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewUserVC.swift; path = ../../../AddNewUserVC.swift; sourceTree = "<group>"; };
+		043D4A652308F88D00B1F3D0 /* Kintai.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Kintai.swift; sourceTree = "<group>"; };
+		0482EDAE230A7AB4008EB07A /* TalkEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkEntryCell.swift; sourceTree = "<group>"; };
+		04969F9323065190008ACBFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04CBDAFB230522EC00717869 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
+		04CBDAFD2305380400717869 /* UserSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionVC.swift; sourceTree = "<group>"; };
+		04CBDAFF230538F900717869 /* UserSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSelectionCell.swift; path = ../UserSelectionCell.swift; sourceTree = "<group>"; };
+		04CBDB0823053E0300717869 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
+		04CBDB0C23053EB400717869 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		5BFF13C501018565028C082D /* Pods-NXWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXWorkspace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
+		F12B97B945FDFC744468AD6A /* Pods-NXWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXWorkspace.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -29,6 +57,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				3D069CC22CA651793386BF59 /* Pods_NXWorkspace.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -40,6 +69,8 @@
 			children = (
 				0432AB9D2304283D00A54096 /* NXWorkspace */,
 				0432AB9C2304283D00A54096 /* Products */,
+				EDB33A7E80AF80355A6DD07C /* Pods */,
+				18CC133C655B7660B97345B3 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -55,13 +86,82 @@
 			isa = PBXGroup;
 			children = (
 				0432AB9E2304283D00A54096 /* AppDelegate.swift */,
-				0432ABA02304283D00A54096 /* ViewController.swift */,
 				0432ABA22304283D00A54096 /* Main.storyboard */,
+				04CBDB0423053B8B00717869 /* Controllers */,
+				04CBDB0323053B8100717869 /* Cells */,
+				04CBDB0523053CC300717869 /* Models */,
 				0432ABA52304283F00A54096 /* Assets.xcassets */,
 				0432ABA72304283F00A54096 /* LaunchScreen.storyboard */,
 				0432ABAA2304283F00A54096 /* Info.plist */,
+				04969F9323065190008ACBFF /* GoogleService-Info.plist */,
 			);
 			path = NXWorkspace;
+			sourceTree = "<group>";
+		};
+		0458D6132305507B00D1949A /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				0432ABA02304283D00A54096 /* HomeVC.swift */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
+		04CBDB0323053B8100717869 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				0482EDAE230A7AB4008EB07A /* TalkEntryCell.swift */,
+				04CBDAFF230538F900717869 /* UserSelectionCell.swift */,
+				043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		04CBDB0423053B8B00717869 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				0458D6132305507B00D1949A /* Home */,
+				04CBDB0E23053F5E00717869 /* Login */,
+			);
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		04CBDB0523053CC300717869 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				043D4A3923066B8800B1F3D0 /* User.swift */,
+				043D4A652308F88D00B1F3D0 /* Kintai.swift */,
+				04CBDB0823053E0300717869 /* Key.swift */,
+				04CBDB0C23053EB400717869 /* Text.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		04CBDB0E23053F5E00717869 /* Login */ = {
+			isa = PBXGroup;
+			children = (
+				04CBDAFB230522EC00717869 /* LoginVC.swift */,
+				04CBDAFD2305380400717869 /* UserSelectionVC.swift */,
+				043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */,
+				043D4A632307D9C300B1F3D0 /* AddNewUserVC.swift */,
+			);
+			path = Login;
+			sourceTree = "<group>";
+		};
+		18CC133C655B7660B97345B3 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				014DEE1BDB6919380ADB93A8 /* Pods_NXWorkspace.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		EDB33A7E80AF80355A6DD07C /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5BFF13C501018565028C082D /* Pods-NXWorkspace.debug.xcconfig */,
+				F12B97B945FDFC744468AD6A /* Pods-NXWorkspace.release.xcconfig */,
+			);
+			name = Pods;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -71,9 +171,11 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0432ABAD2304283F00A54096 /* Build configuration list for PBXNativeTarget "NXWorkspace" */;
 			buildPhases = (
+				098A898EDB6D13FD3A029391 /* [CP] Check Pods Manifest.lock */,
 				0432AB972304283D00A54096 /* Sources */,
 				0432AB982304283D00A54096 /* Frameworks */,
 				0432AB992304283D00A54096 /* Resources */,
+				7272E696DE13CA3DA0B1B2D0 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -125,17 +227,82 @@
 				0432ABA92304283F00A54096 /* LaunchScreen.storyboard in Resources */,
 				0432ABA62304283F00A54096 /* Assets.xcassets in Resources */,
 				0432ABA42304283D00A54096 /* Main.storyboard in Resources */,
+				04969F9423065190008ACBFF /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		098A898EDB6D13FD3A029391 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-NXWorkspace-checkManifestLockResult.txt",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
+			showEnvVarsInLog = 0;
+		};
+		7272E696DE13CA3DA0B1B2D0 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BoringSSL-GRPC/openssl_grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/GTMSessionFetcher/GTMSessionFetcher.framework",
+				"${BUILT_PRODUCTS_DIR}/GoogleUtilities/GoogleUtilities.framework",
+				"${BUILT_PRODUCTS_DIR}/Protobuf/Protobuf.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-C++/grpcpp.framework",
+				"${BUILT_PRODUCTS_DIR}/gRPC-Core/grpc.framework",
+				"${BUILT_PRODUCTS_DIR}/leveldb-library/leveldb.framework",
+				"${BUILT_PRODUCTS_DIR}/nanopb/nanopb.framework",
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/openssl_grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GTMSessionFetcher.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/GoogleUtilities.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Protobuf.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpcpp.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/grpc.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/leveldb.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/nanopb.framework",
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0432AB972304283D00A54096 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0432ABA12304283D00A54096 /* ViewController.swift in Sources */,
+				04CBDAFC230522EC00717869 /* LoginVC.swift in Sources */,
+				04CBDAFE2305380400717869 /* UserSelectionVC.swift in Sources */,
+				043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */,
+				043D4A662308F88D00B1F3D0 /* Kintai.swift in Sources */,
+				04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */,
+				0482EDAF230A7AB4008EB07A /* TalkEntryCell.swift in Sources */,
+				0432ABA12304283D00A54096 /* HomeVC.swift in Sources */,
+				04CBDB0D23053EB400717869 /* Text.swift in Sources */,
+				04CBDB0923053E0300717869 /* Key.swift in Sources */,
+				043D4A3A23066B8800B1F3D0 /* User.swift in Sources */,
+				043D4A642307D9C300B1F3D0 /* AddNewUserVC.swift in Sources */,
+				043D4A3E2306765A00B1F3D0 /* CompanySelectionCell.swift in Sources */,
 				0432AB9F2304283D00A54096 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -213,7 +380,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -268,7 +435,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 12.4;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -280,11 +447,13 @@
 		};
 		0432ABAE2304283F00A54096 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5BFF13C501018565028C082D /* Pods-NXWorkspace.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4PKP9SQQRU;
 				INFOPLIST_FILE = NXWorkspace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -298,11 +467,13 @@
 		};
 		0432ABAF2304283F00A54096 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = F12B97B945FDFC744468AD6A /* Pods-NXWorkspace.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 4PKP9SQQRU;
 				INFOPLIST_FILE = NXWorkspace/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

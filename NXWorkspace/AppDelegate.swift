@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -16,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
+    FirebaseApp.configure()
+    window?.backgroundColor = .white
+    
+    loadAppSettings()
+    
     return true
   }
 
@@ -40,7 +46,22 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func applicationWillTerminate(_ application: UIApplication) {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
   }
-
+  
+  
+  func loadAppSettings() {
+    Firestore.firestore().collection("company").document("001 - LACOMS").getDocument { (snapshot, error) in
+      guard let snapshot = snapshot else {return}
+      
+      let data = snapshot.data()!
+      let companyName = data["meta_companyName"] as? String ?? ""
+      let teamList = data["meta_teamList"] as? [String] ?? [""]
+      
+      UserDefaults.standard.setValue(companyName, forKey: "companyName")
+      UserDefaults.standard.setValue(teamList, forKey: "teamList")
+    }
+  }
+  
+  
 
 }
 
