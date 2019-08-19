@@ -412,7 +412,7 @@ extension HomeViewController {
   }
   
   func randomPicture() {
-    let number = Int.random(in: 1...10)
+    let number = Int.random(in: 1...13)
     infoImageView.image = UIImage(named: "bg\(number)")
   }
   
