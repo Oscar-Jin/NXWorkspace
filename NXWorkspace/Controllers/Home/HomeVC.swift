@@ -31,6 +31,7 @@ class HomeViewController: UIViewController {
   @IBOutlet weak var offWorkButton: UIButton!
   @IBOutlet weak var alreadyOffWorkButton: UIButton!
   
+  @IBOutlet weak var infoImageView: UIImageView!
   
   var timer1: Timer?
   var timer2: Timer?
@@ -44,7 +45,7 @@ class HomeViewController: UIViewController {
     }
   }
   
-  var kintai: Kintai? {
+  var timecard: Timecard? {
     didSet {
       timer2?.invalidate()
       timer3?.invalidate()
@@ -54,7 +55,7 @@ class HomeViewController: UIViewController {
       offworkTimeLabel.text = "退勤時間： "
       restTimeLabel.text = "休憩時間： "
       
-      if let attendedAt = kintai?.attendedAt, let restStartsAt = kintai?.restStartsAt, let restEndsAt = kintai?.restEndsAt, let offworkAt = kintai?.offworkAt {
+      if let attendedAt = timecard?.attendedAt, let restStartsAt = timecard?.restStartsAt, let restEndsAt = timecard?.restEndsAt, let offworkAt = timecard?.offworkAt {
         let calendar = Calendar.current
         let components1 = calendar.dateComponents([.second], from: attendedAt, to: offworkAt)
         let components2 = calendar.dateComponents([.second], from: restStartsAt, to: restEndsAt)
@@ -67,12 +68,18 @@ class HomeViewController: UIViewController {
         offworkTimeLabel.text = "退勤時間： " + DateFormatter.localizedString(from: offworkAt, dateStyle: .none, timeStyle: .medium)
         restTimeLabel.text = "休憩時間： " + String(components3.hour!) + ":" + (String(components3.minute!).count == 1 ? "0\(components3.minute!)" : "\(components3.minute!)")
         
-      } else if let attendedAt = kintai?.attendedAt, let restStartsAt = kintai?.restStartsAt, let restEndsAt = kintai?.restEndsAt {
+      } else if let attendedAt = timecard?.attendedAt, let restStartsAt = timecard?.restStartsAt, let restEndsAt = timecard?.restEndsAt {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute], from: restStartsAt, to: restEndsAt)
         restTimeLabel.text = "休憩時間： " + String(components.hour!) + ":" + (String(components.minute!).count == 1 ? "0\(components.minute!)" : "\(components.minute!)")
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
-        
+        //*********
+        let components1 = calendar.dateComponents([.second], from: attendedAt, to: Date())
+        let components2 = calendar.dateComponents([.second], from: restStartsAt, to: restEndsAt)
+        let difference = components1.second! - components2.second!
+        let (h,m,_) = self.secondsToHoursMinutesSeconds(seconds: difference)
+        self.totalWorkTimeLabel.text = "勤務時間： " + String(h) + ":" + (String(m).count == 1 ? "0\(m)" : String(m))
+        //*********
         timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
           let calendar = Calendar.current
           let components1 = calendar.dateComponents([.second], from: attendedAt, to: Date())
@@ -82,7 +89,7 @@ class HomeViewController: UIViewController {
           self.totalWorkTimeLabel.text = "勤務時間： " + String(h) + ":" + (String(m).count == 1 ? "0\(m)" : String(m))
         })
         
-      } else if let attendedAt = kintai?.attendedAt, let restStartsAt = kintai?.restStartsAt {
+      } else if let attendedAt = timecard?.attendedAt, let restStartsAt = timecard?.restStartsAt {
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
         timer3 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
           let calendar = Calendar.current
@@ -92,15 +99,20 @@ class HomeViewController: UIViewController {
           self.totalWorkTimeLabel.text = "勤務時間： " + String(components2.hour!) + ":" + (String(components2.minute!).count == 1 ? "0\(components2.minute!)" : "\(components2.minute!)")
         })
       
-      } else if let attendedAt = kintai?.attendedAt, let offworkAt = kintai?.offworkAt {
+      } else if let attendedAt = timecard?.attendedAt, let offworkAt = timecard?.offworkAt {
         let calendar = Calendar.current
         let components = calendar.dateComponents([.hour, .minute], from: attendedAt, to: offworkAt)
         totalWorkTimeLabel.text = "勤務時間： " + String(components.hour!) + ":" + (String(components.minute!).count == 1 ? "0\(components.minute!)" : "\(components.minute!)")
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
         offworkTimeLabel.text = "退勤時間： " + DateFormatter.localizedString(from: offworkAt, dateStyle: .none, timeStyle: .medium)
       
-      } else if let attendedAt = kintai?.attendedAt {
+      } else if let attendedAt = timecard?.attendedAt {
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
+        //*****
+        let calendar = Calendar.current
+        let components = calendar.dateComponents([.hour, .minute], from: attendedAt, to: Date())
+        self.totalWorkTimeLabel.text = "勤務時間： " + String(components.hour!) + ":" + (String(components.minute!).count == 1 ? "0\(components.minute!)" : "\(components.minute!)")
+        //*****
         timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
           let calendar = Calendar.current
           let components = calendar.dateComponents([.hour, .minute], from: attendedAt, to: Date())
@@ -109,9 +121,9 @@ class HomeViewController: UIViewController {
       }
       
       
-      if kintai != nil {
+      if timecard != nil {
         print("switching...")
-        switch self.kintai!.status {
+        switch self.timecard!.status {
         case .出勤前:
           print("/出勤前")
           self.workStatusLabel.text = "出勤前"
@@ -189,16 +201,14 @@ class HomeViewController: UIViewController {
   
   
   override func viewDidLoad() {
+    super.viewDidLoad()
     startTimer()
-    
-    user = nil
-    kintai = nil
+    randomPicture()
   }
   
   
   override func viewWillAppear(_ animated: Bool) {
     super.viewWillAppear(animated)
-    
     checkHasUserLogedIn()
   }
   
@@ -207,8 +217,6 @@ class HomeViewController: UIViewController {
   
   @IBAction func logoutTapped(_ sender: UIBarButtonItem) {
     UserDefaults.standard.set(false, forKey: "hasUserLogedIn")
-    user = nil
-    kintai = nil
     checkHasUserLogedIn()
   }
   
@@ -216,31 +224,30 @@ class HomeViewController: UIViewController {
     performSegue(withIdentifier: "showTalkViewSegue", sender: self)
   }
   
+  
   @IBAction func attendanceButtonTapped(_ sender: UIButton) {
     attendedNow()
-    
   }
-  
   
   @IBAction func breakButtonTapped(_ sender: UIButton) {
     restStartNow()
-    
   }
   
   @IBAction func resumeButtonTapped(_ sender: UIButton) {
     restEndsNow()
-    
   }
   
   @IBAction func offWorkButtonTapped(_ sender: UIButton) {
-    let alert =  UIAlertController(title: "本当に退勤されますか？", message: "やり忘れていることがないか、もう一度確認しましょう。" ,preferredStyle: .alert)
+    let alert =  UIAlertController(title: "本当に退勤しますか？", message: "やり忘れていることがないか、もう一度確認しましょう。" ,preferredStyle: .alert)
     alert.addAction(UIAlertAction(title: "いいえ", style: .cancel, handler: nil))
     alert.addAction(UIAlertAction(title: "はい", style: .destructive, handler: { _ in
       self.offWorkNow()
     }))
     present(alert, animated: true, completion: nil)
-    
   }
+  
+  
+  
   
   
   
@@ -259,31 +266,30 @@ extension HomeViewController {
     let hasLogedIn = UserDefaults.standard.bool(forKey: "hasUserLogedIn")
     
     if hasLogedIn {
+      guard let userID = UserDefaults.standard.string(forKey: "userID") else {return}
+      guard let userFullName = UserDefaults.standard.string(forKey: "userFullName") else {return}
+      
       view.isHidden = false
+      retrieveUser(with: userID, andAssign: &user)
+      retrieveTimecard(with: userFullName, andAssign: &timecard)
       
-      currentUserFromFirestore()
-      currentKintaiFromFirestore()
     } else {
-      view.isHidden = true
-      
       user = nil
-      kintai = nil
+      timecard = nil
+      view.isHidden = true
       performSegue(withIdentifier: "showLoginViewSegue", sender: self)
     }
     
   }
   
-  func currentUserFromFirestore() {
-    guard let userID = UserDefaults.standard.string(forKey: "userID") else {return}
-    
+  func retrieveUser(with userID: String, andAssign user: inout User?) {
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").whereField("documentID", isEqualTo: userID).getDocuments { (snapshot, error) in
       guard let document = snapshot?.documents.first else { UserDefaults.standard.set(false, forKey: "hasUserLogedIn"); return}
       self.user = User(data: document.data())
     }
   }
   
-  func currentKintaiFromFirestore() {
-    guard let userFullName = UserDefaults.standard.string(forKey: "userFullName") else {return}
+  func retrieveTimecard(with fullName: String, andAssign timecard: inout Timecard?) {
     let year = String(Calendar.current.component(.year, from: Date()))
     let month = String(Calendar.current.component(.month, from: Date()))
     let day = String(Calendar.current.component(.day, from: Date()))
@@ -291,12 +297,12 @@ extension HomeViewController {
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).getDocument { (snapshot, error) in
       guard let snapshot = snapshot else {return}
-      guard let kintaiData = snapshot.data()?[userFullName] as? [String: Timestamp] else {return}
-      
-      self.kintai = Kintai(data: kintaiData)
-      
+      guard let timecardData = snapshot.data()?[fullName] as? [String: Timestamp] else {return}
+      self.timecard = Timecard(data: timecardData)
     }
   }
+
+  
   
   func attendedNow() {
     guard let userFullName = UserDefaults.standard.string(forKey: "userFullName") else {return}
@@ -307,13 +313,14 @@ extension HomeViewController {
     let today = year + "_" + month + "_" + day
     
     var data = [String: Date]()
-    if let attendedAt = kintai?.attendedAt {data["出勤"] = attendedAt }
-    if let restStartsAt  = kintai?.restStartsAt {data["休憩"] = restStartsAt }
-    if let restEndsAt = kintai?.restEndsAt {data["再開"] = restEndsAt }
-    if let offworkAt = kintai?.offworkAt {data["退勤"] = offworkAt }
+    if let attendedAt = timecard?.attendedAt {data["出勤"] = attendedAt }
+    if let restStartsAt  = timecard?.restStartsAt {data["休憩"] = restStartsAt }
+    if let restEndsAt = timecard?.restEndsAt {data["再開"] = restEndsAt }
+    if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
+    
     
     data["出勤"] = Date()
-    kintai = Kintai(data: data)
+    timecard = Timecard(data: data)
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).getDocument { (snapshot, error) in
       guard let _ = error else {return}
@@ -336,13 +343,13 @@ extension HomeViewController {
     let today = year + "_" + month + "_" + day
     
     var data = [String: Date]()
-    if let attendedAt = kintai?.attendedAt {data["出勤"] = attendedAt }
-    if let restStartsAt  = kintai?.restStartsAt {data["休憩"] = restStartsAt }
-    if let restEndsAt = kintai?.restEndsAt {data["再開"] = restEndsAt }
-    if let offworkAt = kintai?.offworkAt {data["退勤"] = offworkAt }
+    if let attendedAt = timecard?.attendedAt {data["出勤"] = attendedAt }
+    if let restStartsAt  = timecard?.restStartsAt {data["休憩"] = restStartsAt }
+    if let restEndsAt = timecard?.restEndsAt {data["再開"] = restEndsAt }
+    if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
     
     data["退勤"] = Date()
-    kintai = Kintai(data: data)
+    timecard = Timecard(data: data)
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
   }
@@ -356,13 +363,13 @@ extension HomeViewController {
     let today = year + "_" + month + "_" + day
     
     var data = [String: Date]()
-    if let attendedAt = kintai?.attendedAt {data["出勤"] = attendedAt }
-    if let restStartsAt  = kintai?.restStartsAt {data["休憩"] = restStartsAt }
-    if let restEndsAt = kintai?.restEndsAt {data["再開"] = restEndsAt }
-    if let offworkAt = kintai?.offworkAt {data["退勤"] = offworkAt }
+    if let attendedAt = timecard?.attendedAt {data["出勤"] = attendedAt }
+    if let restStartsAt  = timecard?.restStartsAt {data["休憩"] = restStartsAt }
+    if let restEndsAt = timecard?.restEndsAt {data["再開"] = restEndsAt }
+    if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
     
     data["休憩"] = Date()
-    kintai = Kintai(data: data)
+    timecard = Timecard(data: data)
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
   }
@@ -376,13 +383,13 @@ extension HomeViewController {
     let today = year + "_" + month + "_" + day
     
     var data = [String: Date]()
-    if let attendedAt = kintai?.attendedAt {data["出勤"] = attendedAt }
-    if let restStartsAt  = kintai?.restStartsAt {data["休憩"] = restStartsAt }
-    if let restEndsAt = kintai?.restEndsAt {data["再開"] = restEndsAt }
-    if let offworkAt = kintai?.offworkAt {data["退勤"] = offworkAt }
+    if let attendedAt = timecard?.attendedAt {data["出勤"] = attendedAt }
+    if let restStartsAt  = timecard?.restStartsAt {data["休憩"] = restStartsAt }
+    if let restEndsAt = timecard?.restEndsAt {data["再開"] = restEndsAt }
+    if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
     
     data["再開"] = Date()
-    kintai = Kintai(data: data)
+    timecard = Timecard(data: data)
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
   }
@@ -402,6 +409,11 @@ extension HomeViewController {
       self.dateDisplayLabel.text = DateFormatter.localizedString(from: Date(), dateStyle: .medium, timeStyle: .none)
       self.dayOfWeekDisplayLabel.text = dateFormatter.string(from: Date())
     })
+  }
+  
+  func randomPicture() {
+    let number = Int.random(in: 1...10)
+    infoImageView.image = UIImage(named: "bg\(number)")
   }
   
   func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
