@@ -15,5 +15,11 @@ class LessonLogCell: UITableViewCell {
   @IBOutlet weak var talkTextField: UITextField!
   
   
+  func resignAllFirstResponders() {
+    timeframeTextField.resignFirstResponder()
+    classLevelTextField.resignFirstResponder()
+    attendanceNumberTextField.resignFirstResponder()
+    talkTextField.resignFirstResponder()
+  }
 
 }

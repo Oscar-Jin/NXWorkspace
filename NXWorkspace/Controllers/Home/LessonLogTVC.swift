@@ -14,11 +14,22 @@ class LessonLogTVC: UITableViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
+    self.navigationItem.rightBarButtonItem = self.editButtonItem
     
     lessonLogs.append(LessonLog(data: [String: Any]()) )
-    
-    self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
+  
+  override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    if let lessonLogCell = tableView.cellForRow(at: indexPath) as? LessonLogCell {
+      lessonLogCell.resignAllFirstResponders()
+    }
+    #warning("might add different type of cell in the future")
+  }
+  
+  
+  
+  
+  
   
   // MARK: - Table view data source
   
@@ -52,6 +63,10 @@ class LessonLogTVC: UITableViewController {
     }
   }
 
+  
+  
+  
+  
   /*
    // MARK: - Navigation
    

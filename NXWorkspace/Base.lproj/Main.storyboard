@@ -400,10 +400,10 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="LessonLogCell" rowHeight="257" id="Q2A-W0-Iyl" customClass="LessonLogCell" customModule="NXWorkspace" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" reuseIdentifier="LessonLogCell" rowHeight="257" id="Q2A-W0-Iyl" customClass="LessonLogCell" customModule="NXWorkspace" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="375" height="257"/>
                                 <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q2A-W0-Iyl" id="9kZ-FL-5Wt">
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Q2A-W0-Iyl" id="9kZ-FL-5Wt" userLabel="Main View">
                                     <rect key="frame" x="0.0" y="0.0" width="375" height="257"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
@@ -413,7 +413,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1hh-Xo-er5" userLabel="Text Field View">
                                                     <rect key="frame" x="0.0" y="0.0" width="343" height="48"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間枠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hg1-k6-65U">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="時間枠" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hg1-k6-65U">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -439,7 +439,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Vj1-q3-HAr" userLabel="Text Field View">
                                                     <rect key="frame" x="0.0" y="56" width="343" height="47"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="クラス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEg-Oy-pFI">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="クラス" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tEg-Oy-pFI">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -465,7 +465,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="T52-n7-4dr" userLabel="Text Field View">
                                                     <rect key="frame" x="0.0" y="111" width="343" height="45"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出席数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhq-BE-jnT">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="出席数" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hhq-BE-jnT">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="highlightedColor"/>
@@ -491,7 +491,7 @@
                                                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="LTy-fv-tQh" userLabel="Text Field View">
                                                     <rect key="frame" x="0.0" y="164" width="343" height="55"/>
                                                     <subviews>
-                                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="トーク" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxi-RK-JSq">
+                                                        <label opaque="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="トーク" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jxi-RK-JSq">
                                                             <rect key="frame" x="0.0" y="0.0" width="343" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                             <nil key="textColor"/>
@@ -528,6 +528,7 @@
                                             </subviews>
                                         </stackView>
                                     </subviews>
+                                    <gestureRecognizers/>
                                     <constraints>
                                         <constraint firstItem="1xJ-mn-55Z" firstAttribute="top" secondItem="9kZ-FL-5Wt" secondAttribute="topMargin" priority="999" constant="8" id="9NA-MZ-A6C"/>
                                         <constraint firstItem="1xJ-mn-55Z" firstAttribute="leading" secondItem="9kZ-FL-5Wt" secondAttribute="leadingMargin" id="pVR-wv-LVV"/>
@@ -535,6 +536,7 @@
                                         <constraint firstItem="1xJ-mn-55Z" firstAttribute="trailing" secondItem="9kZ-FL-5Wt" secondAttribute="trailingMargin" id="vGj-5O-cmg"/>
                                     </constraints>
                                 </tableViewCellContentView>
+                                <gestureRecognizers/>
                                 <connections>
                                     <outlet property="attendanceNumberTextField" destination="6sY-qQ-ygX" id="Ji5-zA-fe0"/>
                                     <outlet property="classLevelTextField" destination="IeE-WQ-6VM" id="gm7-bC-f70"/>
@@ -1412,14 +1414,13 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="95c-9G-Mgi">
                                                             <rect key="frame" x="0.0" y="0.0" width="249" height="26.5"/>
-                                                            <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
-                                                            <color key="textColor" red="0.83839625630000003" green="0.40483772629999998" blue="0.4056578441" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                                            <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="アカウント設定、パスワード変更、ログイン設定" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kg5-rx-VSo">
                                                             <rect key="frame" x="0.0" y="34.5" width="249" height="17"/>
                                                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                            <nil key="textColor"/>
+                                                            <color key="textColor" red="0.83921568629999999" green="0.4039215686" blue="0.3803921569" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
@@ -1446,7 +1447,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="341" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="出勤日登録" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ggv-uP-aeb">
+                                                <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" insetsLayoutMarginsFromSafeArea="NO" text="出勤日" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="ggv-uP-aeb">
                                                     <rect key="frame" x="61" y="0.0" width="279" height="43.5"/>
                                                     <autoresizingMask key="autoresizingMask"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
@@ -1535,7 +1536,7 @@
                             <outlet property="delegate" destination="ruS-XH-D4x" id="Zeh-AW-fQ6"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="設定" prompt="開発中です... 各種設定は、現在機能していません！" id="Z36-HT-dw5"/>
+                    <navigationItem key="navigationItem" title="設定" prompt="開発中です... 各種設定はまだ機能していません！" id="Z36-HT-dw5"/>
                     <connections>
                         <outlet property="userImageView" destination="qLS-RQ-dgl" id="5fs-BK-GCH"/>
                         <outlet property="userNameLabel" destination="95c-9G-Mgi" id="xO8-1j-ipm"/>
