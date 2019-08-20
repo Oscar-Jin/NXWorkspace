@@ -16,9 +16,12 @@
 		043D4A3E2306765A00B1F3D0 /* CompanySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */; };
 		043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */; };
 		043D4A662308F88D00B1F3D0 /* Timecard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A652308F88D00B1F3D0 /* Timecard.swift */; };
-		0482EDAF230A7AB4008EB07A /* TalkEntryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482EDAE230A7AB4008EB07A /* TalkEntryCell.swift */; };
+		0482EDAF230A7AB4008EB07A /* LessonLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */; };
 		048B70A4230AACA60054EF26 /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B70A3230AACA60054EF26 /* AddNewUserVC.swift */; };
 		04969F9423065190008ACBFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04969F9323065190008ACBFF /* GoogleService-Info.plist */; };
+		04A58E59230BDF9200A63386 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A58E58230BDF9200A63386 /* LessonLog.swift */; };
+		04A58E5B230BEA2A00A63386 /* LessonLogTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A58E5A230BEA2A00A63386 /* LessonLogTVC.swift */; };
+		04A58E5D230C04E900A63386 /* SettingsTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A58E5C230C04E900A63386 /* SettingsTVC.swift */; };
 		04CBDAFC230522EC00717869 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFB230522EC00717869 /* LoginVC.swift */; };
 		04CBDAFE2305380400717869 /* UserSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFD2305380400717869 /* UserSelectionVC.swift */; };
 		04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFF230538F900717869 /* UserSelectionCell.swift */; };
@@ -40,9 +43,12 @@
 		043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionCell.swift; sourceTree = "<group>"; };
 		043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionVC.swift; sourceTree = "<group>"; };
 		043D4A652308F88D00B1F3D0 /* Timecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timecard.swift; sourceTree = "<group>"; };
-		0482EDAE230A7AB4008EB07A /* TalkEntryCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TalkEntryCell.swift; sourceTree = "<group>"; };
+		0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogCell.swift; sourceTree = "<group>"; };
 		048B70A3230AACA60054EF26 /* AddNewUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewUserVC.swift; path = /Users/zhirenjin/Desktop/NXWorkspace/NXWorkspace/Controllers/Login/AddNewUserVC.swift; sourceTree = "<absolute>"; };
 		04969F9323065190008ACBFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		04A58E58230BDF9200A63386 /* LessonLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LessonLog.swift; path = ../LessonLog.swift; sourceTree = "<group>"; };
+		04A58E5A230BEA2A00A63386 /* LessonLogTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogTVC.swift; sourceTree = "<group>"; };
+		04A58E5C230C04E900A63386 /* SettingsTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTVC.swift; sourceTree = "<group>"; };
 		04CBDAFB230522EC00717869 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		04CBDAFD2305380400717869 /* UserSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionVC.swift; sourceTree = "<group>"; };
 		04CBDAFF230538F900717869 /* UserSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSelectionCell.swift; path = ../UserSelectionCell.swift; sourceTree = "<group>"; };
@@ -102,14 +108,23 @@
 			isa = PBXGroup;
 			children = (
 				0432ABA02304283D00A54096 /* HomeVC.swift */,
+				04A58E5A230BEA2A00A63386 /* LessonLogTVC.swift */,
 			);
 			path = Home;
+			sourceTree = "<group>";
+		};
+		04A58E5E230C04F900A63386 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				04A58E5C230C04E900A63386 /* SettingsTVC.swift */,
+			);
+			path = Settings;
 			sourceTree = "<group>";
 		};
 		04CBDB0323053B8100717869 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				0482EDAE230A7AB4008EB07A /* TalkEntryCell.swift */,
+				0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */,
 				04CBDAFF230538F900717869 /* UserSelectionCell.swift */,
 				043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */,
 			);
@@ -119,6 +134,7 @@
 		04CBDB0423053B8B00717869 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				04A58E5E230C04F900A63386 /* Settings */,
 				0458D6132305507B00D1949A /* Home */,
 				04CBDB0E23053F5E00717869 /* Login */,
 			);
@@ -130,6 +146,7 @@
 			children = (
 				043D4A3923066B8800B1F3D0 /* User.swift */,
 				043D4A652308F88D00B1F3D0 /* Timecard.swift */,
+				04A58E58230BDF9200A63386 /* LessonLog.swift */,
 				04CBDB0823053E0300717869 /* Key.swift */,
 				04CBDB0C23053EB400717869 /* Text.swift */,
 			);
@@ -293,12 +310,15 @@
 			files = (
 				04CBDAFC230522EC00717869 /* LoginVC.swift in Sources */,
 				04CBDAFE2305380400717869 /* UserSelectionVC.swift in Sources */,
+				04A58E5B230BEA2A00A63386 /* LessonLogTVC.swift in Sources */,
 				043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */,
 				043D4A662308F88D00B1F3D0 /* Timecard.swift in Sources */,
 				048B70A4230AACA60054EF26 /* AddNewUserVC.swift in Sources */,
 				04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */,
-				0482EDAF230A7AB4008EB07A /* TalkEntryCell.swift in Sources */,
+				0482EDAF230A7AB4008EB07A /* LessonLogCell.swift in Sources */,
+				04A58E59230BDF9200A63386 /* LessonLog.swift in Sources */,
 				0432ABA12304283D00A54096 /* HomeVC.swift in Sources */,
+				04A58E5D230C04E900A63386 /* SettingsTVC.swift in Sources */,
 				04CBDB0D23053EB400717869 /* Text.swift in Sources */,
 				04CBDB0923053E0300717869 /* Key.swift in Sources */,
 				043D4A3A23066B8800B1F3D0 /* User.swift in Sources */,

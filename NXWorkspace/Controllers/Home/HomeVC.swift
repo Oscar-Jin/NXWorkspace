@@ -33,6 +33,7 @@ class HomeViewController: UIViewController {
   
   @IBOutlet weak var infoImageView: UIImageView!
   
+  var timer0: Timer?
   var timer1: Timer?
   var timer2: Timer?
   var timer3: Timer?
@@ -203,6 +204,9 @@ class HomeViewController: UIViewController {
   override func viewDidLoad() {
     super.viewDidLoad()
     startTimer()
+    startHasPassedADayTimer()
+    
+    setButtonsToHaveShadow()
     randomPicture()
   }
   
@@ -296,8 +300,7 @@ extension HomeViewController {
     let today = year + "_" + month + "_" + day
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).getDocument { (snapshot, error) in
-      guard let snapshot = snapshot else {return}
-      guard let timecardData = snapshot.data()?[fullName] as? [String: Timestamp] else {return}
+      guard let snapshot = snapshot, let timecardData = snapshot.data()?[fullName] as? [String: Timestamp] else {self.timecard = nil; return}
       self.timecard = Timecard(data: timecardData)
     }
   }
@@ -321,12 +324,14 @@ extension HomeViewController {
     
     data["出勤"] = Date()
     timecard = Timecard(data: data)
+    print(today)
+    print("attendedNow: timecard updated")
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).getDocument { (snapshot, error) in
-      guard let _ = error else {return}
       if let _ = snapshot?.data() {
         return
       } else {
+        print("file not found. set new file")
         Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).setData([userFullName: data])
       }
     }
@@ -339,7 +344,7 @@ extension HomeViewController {
     
     let year = String(Calendar.current.component(.year, from: Date()))
     let month = String(Calendar.current.component(.month, from: Date()))
-    let day = String(Calendar.current.component(.day, from: Date()))
+    let day = String(Calendar.current.component(.day, from: timecard?.attendedAt ?? Date()))
     let today = year + "_" + month + "_" + day
     
     var data = [String: Date]()
@@ -416,10 +421,36 @@ extension HomeViewController {
     infoImageView.image = UIImage(named: "bg\(number)")
   }
   
+  func startHasPassedADayTimer() {
+    timer0 = Timer.scheduledTimer(withTimeInterval: 3600, repeats: true, block: { _ in
+      guard let attendedAt = self.timecard?.attendedAt else {return}
+      if Calendar.current.component(.day, from: attendedAt) != Calendar.current.component(.day, from: Date()) {
+        if let _ = self.timecard?.offworkAt {
+          self.checkHasUserLogedIn()
+        } else {
+          //TODO:
+          #warning("not yet fixed")
+          self.checkHasUserLogedIn()
+        }
+      }
+    })
+  }
+  
   func secondsToHoursMinutesSeconds (seconds : Int) -> (Int, Int, Int) {
     return (seconds / 3600, (seconds % 3600) / 60, (seconds % 3600) % 60)
   }
   
+  
+  func setButtonsToHaveShadow() {
+    let buttonArray = [attendanceButton, breakButton, resumeButton, offWorkButton, alreadyOffWorkButton]
+
+    buttonArray.forEach() {
+      $0?.layer.shadowColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+      $0?.layer.shadowRadius = 2
+      $0?.layer.shadowOpacity = 0.17
+      $0?.layer.shadowOffset = CGSize(width: 2, height: 2)
+    }
+  }
   
 }
 
