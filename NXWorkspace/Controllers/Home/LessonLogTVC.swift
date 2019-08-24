@@ -9,14 +9,15 @@
 import UIKit
 
 class LessonLogTVC: UITableViewController {
-  
+
   var lessonLogs = [LessonLog]()
-  
+
   override func viewDidLoad() {
     super.viewDidLoad()
-    self.navigationItem.rightBarButtonItem = self.editButtonItem
-    
+   
     lessonLogs.append(LessonLog(data: [String: Any]()) )
+    
+    self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -43,7 +44,6 @@ class LessonLogTVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "LessonLogCell", for: indexPath) as! LessonLogCell
-    
     return cell
   }
   
@@ -64,6 +64,11 @@ class LessonLogTVC: UITableViewController {
   }
 
   
+
+  
+  
+  
+  //MARK: -
   
   
   

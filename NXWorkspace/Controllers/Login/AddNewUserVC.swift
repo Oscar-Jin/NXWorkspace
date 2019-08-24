@@ -8,6 +8,7 @@
 import UIKit
 import Firebase
 
+
 class AddNewUserVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate, UIPickerViewDataSource {
   @IBOutlet var textFieldCollection: [UITextField]!
   @IBOutlet weak var genderTextField: UITextField!
@@ -18,6 +19,7 @@ class AddNewUserVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
   var genderPicker = UIPickerView()
   var teamPicker = UIPickerView()
   var datePicker = UIDatePicker()
+  var vSpinner : UIView?
 
   
   override func viewDidLoad() {
@@ -178,3 +180,4 @@ class AddNewUserVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
   
   
 }
+

@@ -33,6 +33,8 @@ class HomeViewController: UIViewController {
   
   @IBOutlet weak var infoImageView: UIImageView!
   
+  var vSpinner : UIView?
+  
   var timer0: Timer?
   var timer1: Timer?
   var timer2: Timer?
@@ -52,8 +54,8 @@ class HomeViewController: UIViewController {
       timer3?.invalidate()
       
       totalWorkTimeLabel.text = "勤務時間： "
-      attendanceTimeLabel.text = "出勤時間： "
-      offworkTimeLabel.text = "退勤時間： "
+      attendanceTimeLabel.text = "出社時間： "
+      offworkTimeLabel.text = "退社時間： "
       restTimeLabel.text = "休憩時間： "
       
       if let attendedAt = timecard?.attendedAt, let restStartsAt = timecard?.restStartsAt, let restEndsAt = timecard?.restEndsAt, let offworkAt = timecard?.offworkAt {
@@ -66,7 +68,7 @@ class HomeViewController: UIViewController {
         let (h,m,_) = self.secondsToHoursMinutesSeconds(seconds: difference)
         totalWorkTimeLabel.text = "勤務時間： " + String(h) + ":" + (String(m).count == 1 ? "0\(m)" : String(m))
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
-        offworkTimeLabel.text = "退勤時間： " + DateFormatter.localizedString(from: offworkAt, dateStyle: .none, timeStyle: .medium)
+        offworkTimeLabel.text = "退社時間： " + DateFormatter.localizedString(from: offworkAt, dateStyle: .none, timeStyle: .medium)
         restTimeLabel.text = "休憩時間： " + String(components3.hour!) + ":" + (String(components3.minute!).count == 1 ? "0\(components3.minute!)" : "\(components3.minute!)")
         
       } else if let attendedAt = timecard?.attendedAt, let restStartsAt = timecard?.restStartsAt, let restEndsAt = timecard?.restEndsAt {
@@ -105,7 +107,7 @@ class HomeViewController: UIViewController {
         let components = calendar.dateComponents([.hour, .minute], from: attendedAt, to: offworkAt)
         totalWorkTimeLabel.text = "勤務時間： " + String(components.hour!) + ":" + (String(components.minute!).count == 1 ? "0\(components.minute!)" : "\(components.minute!)")
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
-        offworkTimeLabel.text = "退勤時間： " + DateFormatter.localizedString(from: offworkAt, dateStyle: .none, timeStyle: .medium)
+        offworkTimeLabel.text = "退社時間： " + DateFormatter.localizedString(from: offworkAt, dateStyle: .none, timeStyle: .medium)
       
       } else if let attendedAt = timecard?.attendedAt {
         attendanceTimeLabel.text = "出勤時間： " + DateFormatter.localizedString(from: attendedAt, dateStyle: .none, timeStyle: .medium)
@@ -225,7 +227,13 @@ class HomeViewController: UIViewController {
   }
   
   @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-    performSegue(withIdentifier: "showTalkViewSegue", sender: self)
+    showSpinner(onView: UIApplication.shared.keyWindow!)
+    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
+      self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
+      self.removeSpinner()
+    }
+    
+    //
   }
   
   
@@ -452,7 +460,32 @@ extension HomeViewController {
     }
   }
   
+  
+  func showSpinner(onView : UIView) {
+    let spinnerView = UIView.init(frame: onView.bounds)
+    spinnerView.backgroundColor = #colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)
+    spinnerView.alpha = 0.3
+    
+    let ai = UIActivityIndicatorView.init(style: .whiteLarge)
+    ai.center = spinnerView.center
+    ai.startAnimating()
+    
+    DispatchQueue.main.async {
+      spinnerView.addSubview(ai)
+      onView.addSubview(spinnerView)
+    }
+    
+    vSpinner = spinnerView
+  }
+  
+  func removeSpinner() {
+    DispatchQueue.main.async {
+      self.vSpinner?.removeFromSuperview()
+      self.vSpinner = nil
+    }
+  }
 }
+
 
 
 
