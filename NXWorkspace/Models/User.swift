@@ -9,7 +9,8 @@
 import Foundation
 import Firebase
 
-struct User {
+class User {
+  
   var lastName_Kanji: String
   var lastName_Hiragana: String
   var firstName_Kanji: String
@@ -29,6 +30,28 @@ struct User {
   var updatedOn: Date
   
   var password: String
+  
+  var workOnMonday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnMonday": workOnMonday]) }
+  }
+  var workOnTuesday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnTuesday": workOnTuesday]) }
+  }
+  var workOnWednesday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnWednesday": workOnWednesday]) }
+  }
+  var workOnThursday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnThursday": workOnThursday]) }
+  }
+  var workOnFriday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnFriday": workOnFriday]) }
+  }
+  var workOnSaturday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnSaturday": workOnSaturday]) }
+  }
+  var workOnSunday: [String] {
+    didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnSunday": workOnSunday]) }
+  }
   
   init(data: [String: Any]) {
     lastName_Kanji = data["lastName_Kanji"] as? String ?? ""
@@ -50,6 +73,47 @@ struct User {
     updatedOn = (data["updatedOn"] as? Timestamp)?.dateValue() ?? Date(timeIntervalSince1970: 0)
     
     password = data["password"] as! String
+    
+    workOnMonday = data["workOnMonday"] as? [String] ?? []
+    workOnTuesday = data["workOnTuesday"] as? [String] ?? []
+    workOnWednesday = data["workOnWednesday"] as? [String] ?? []
+    workOnThursday = data["workOnThursday"] as? [String] ?? []
+    workOnFriday = data["workOnFriday"] as? [String] ?? []
+    workOnSaturday = data["workOnSaturday"] as? [String] ?? []
+    workOnSunday = data["workOnSunday"] as? [String] ?? []
+  }
+  
+  var documentData: [String: Any] {
+    let user: [String: Any] = [
+      "lastName_Kanji": lastName_Kanji,
+      "lastName_Hiragana": lastName_Hiragana,
+      "firstName_Kanji": firstName_Kanji,
+      "firstName_Hiragana": firstName_Hiragana,
+      
+      "affiliatedWith": affiliatedWith,
+      "team": team,
+      
+      "gender": gender,
+      "birthDay": birthDay,
+      "documentID": documentID,
+      
+      "photoID": photoID as Any,
+      "photoURL": photoURL as Any,
+      
+      "createdOn": createdOn,
+      "updatedOn": updatedOn,
+      
+      "password": password,
+      
+      "workOnMonday": workOnMonday as Any,
+      "workOnTuesday": workOnTuesday as Any,
+      "workOnWednesday": workOnWednesday as Any,
+      "workOnThursday": workOnThursday as Any,
+      "workOnFriday": workOnFriday as Any,
+      "workOnSaturday": workOnSaturday as Any,
+      "workOnSunday": workOnSunday as Any,
+    ]
+    return user
   }
   
   

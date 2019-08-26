@@ -16,6 +16,9 @@
 		043D4A3E2306765A00B1F3D0 /* CompanySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */; };
 		043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */; };
 		043D4A662308F88D00B1F3D0 /* Timecard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A652308F88D00B1F3D0 /* Timecard.swift */; };
+		0466726B23120DDF00F4D0B6 /* MonthSelectionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466726A23120DDF00F4D0B6 /* MonthSelectionTVC.swift */; };
+		0466726D23136EE500F4D0B6 /* TimeSelectionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466726C23136EE400F4D0B6 /* TimeSelectionTVC.swift */; };
+		0466726F23136F1C00F4D0B6 /* TimeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466726E23136F1C00F4D0B6 /* TimeSelectionCell.swift */; };
 		0482EDAF230A7AB4008EB07A /* LessonLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */; };
 		048B70A4230AACA60054EF26 /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B70A3230AACA60054EF26 /* AddNewUserVC.swift */; };
 		04969F9423065190008ACBFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04969F9323065190008ACBFF /* GoogleService-Info.plist */; };
@@ -27,6 +30,7 @@
 		04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFF230538F900717869 /* UserSelectionCell.swift */; };
 		04CBDB0923053E0300717869 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0823053E0300717869 /* Key.swift */; };
 		04CBDB0D23053EB400717869 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0C23053EB400717869 /* Text.swift */; };
+		04CEBC6A2310EBCB0050A371 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEBC692310EBCB0050A371 /* IndicatorView.swift */; };
 		3D069CC22CA651793386BF59 /* Pods_NXWorkspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014DEE1BDB6919380ADB93A8 /* Pods_NXWorkspace.framework */; };
 /* End PBXBuildFile section */
 
@@ -43,6 +47,9 @@
 		043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionCell.swift; sourceTree = "<group>"; };
 		043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionVC.swift; sourceTree = "<group>"; };
 		043D4A652308F88D00B1F3D0 /* Timecard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timecard.swift; sourceTree = "<group>"; };
+		0466726A23120DDF00F4D0B6 /* MonthSelectionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = MonthSelectionTVC.swift; path = ../../MonthSelectionTVC.swift; sourceTree = "<group>"; };
+		0466726C23136EE400F4D0B6 /* TimeSelectionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionTVC.swift; sourceTree = "<group>"; };
+		0466726E23136F1C00F4D0B6 /* TimeSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionCell.swift; sourceTree = "<group>"; };
 		0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogCell.swift; sourceTree = "<group>"; };
 		048B70A3230AACA60054EF26 /* AddNewUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewUserVC.swift; path = /Users/zhirenjin/Desktop/NXWorkspace/NXWorkspace/Controllers/Login/AddNewUserVC.swift; sourceTree = "<absolute>"; };
 		04969F9323065190008ACBFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -54,6 +61,7 @@
 		04CBDAFF230538F900717869 /* UserSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSelectionCell.swift; path = ../UserSelectionCell.swift; sourceTree = "<group>"; };
 		04CBDB0823053E0300717869 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
 		04CBDB0C23053EB400717869 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		04CEBC692310EBCB0050A371 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		5BFF13C501018565028C082D /* Pods-NXWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXWorkspace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		F12B97B945FDFC744468AD6A /* Pods-NXWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXWorkspace.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -91,11 +99,12 @@
 		0432AB9D2304283D00A54096 /* NXWorkspace */ = {
 			isa = PBXGroup;
 			children = (
-				0432AB9E2304283D00A54096 /* AppDelegate.swift */,
 				0432ABA22304283D00A54096 /* Main.storyboard */,
+				0432AB9E2304283D00A54096 /* AppDelegate.swift */,
 				04CBDB0423053B8B00717869 /* Controllers */,
 				04CBDB0323053B8100717869 /* Cells */,
 				04CBDB0523053CC300717869 /* Models */,
+				046672692310F33900F4D0B6 /* Views */,
 				0432ABA52304283F00A54096 /* Assets.xcassets */,
 				0432ABA72304283F00A54096 /* LaunchScreen.storyboard */,
 				0432ABAA2304283F00A54096 /* Info.plist */,
@@ -113,10 +122,20 @@
 			path = Home;
 			sourceTree = "<group>";
 		};
+		046672692310F33900F4D0B6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				04CEBC692310EBCB0050A371 /* IndicatorView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		04A58E5E230C04F900A63386 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
 				04A58E5C230C04E900A63386 /* SettingsTVC.swift */,
+				0466726A23120DDF00F4D0B6 /* MonthSelectionTVC.swift */,
+				0466726C23136EE400F4D0B6 /* TimeSelectionTVC.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -126,6 +145,7 @@
 			children = (
 				0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */,
 				04CBDAFF230538F900717869 /* UserSelectionCell.swift */,
+				0466726E23136F1C00F4D0B6 /* TimeSelectionCell.swift */,
 				043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */,
 			);
 			path = Cells;
@@ -134,9 +154,9 @@
 		04CBDB0423053B8B00717869 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				04A58E5E230C04F900A63386 /* Settings */,
-				0458D6132305507B00D1949A /* Home */,
 				04CBDB0E23053F5E00717869 /* Login */,
+				0458D6132305507B00D1949A /* Home */,
+				04A58E5E230C04F900A63386 /* Settings */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -313,12 +333,16 @@
 				04A58E5B230BEA2A00A63386 /* LessonLogTVC.swift in Sources */,
 				043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */,
 				043D4A662308F88D00B1F3D0 /* Timecard.swift in Sources */,
+				0466726D23136EE500F4D0B6 /* TimeSelectionTVC.swift in Sources */,
 				048B70A4230AACA60054EF26 /* AddNewUserVC.swift in Sources */,
+				0466726F23136F1C00F4D0B6 /* TimeSelectionCell.swift in Sources */,
 				04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */,
 				0482EDAF230A7AB4008EB07A /* LessonLogCell.swift in Sources */,
 				04A58E59230BDF9200A63386 /* LessonLog.swift in Sources */,
+				0466726B23120DDF00F4D0B6 /* MonthSelectionTVC.swift in Sources */,
 				0432ABA12304283D00A54096 /* HomeVC.swift in Sources */,
 				04A58E5D230C04E900A63386 /* SettingsTVC.swift in Sources */,
+				04CEBC6A2310EBCB0050A371 /* IndicatorView.swift in Sources */,
 				04CBDB0D23053EB400717869 /* Text.swift in Sources */,
 				04CBDB0923053E0300717869 /* Key.swift in Sources */,
 				043D4A3A23066B8800B1F3D0 /* User.swift in Sources */,

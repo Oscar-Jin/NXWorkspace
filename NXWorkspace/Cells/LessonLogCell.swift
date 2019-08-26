@@ -8,9 +8,8 @@
 
 import UIKit
 
-class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource {
+class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSource, UITextFieldDelegate {
 
-  
   @IBOutlet weak var timeframeTextField: UITextField!
   @IBOutlet weak var classLevelTextField: UITextField!
   @IBOutlet weak var attendanceNumberTextField: UITextField!
@@ -19,28 +18,35 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
   var timeframePicker = UIPickerView()
   var classPicker = UIPickerView()
   var numberPicker = UIPickerView()
-  var toolbar: UIToolbar!
+  
+  var lessonLog: LessonLog! {
+    didSet {
+      timeframeTextField.text = lessonLog.timeframe
+      classLevelTextField.text = lessonLog.classLevel
+      attendanceNumberTextField.text = lessonLog.attendanceNumber
+      talkTextField.text = lessonLog.talk
+    }
+  }
   
   override func awakeFromNib() {
-    print("AnyawakeFromNib")
-    let spacelItem = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
-    let doneItem = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(doneBarItemTapped))
-    
-    toolbar = UIToolbar(frame: CGRect(x: 0, y: 0, width: frame.size.width, height: 35))
-    toolbar.setItems([spacelItem, doneItem], animated: true)
-    toolbar.backgroundColor = #colorLiteral(red: 0.2549019754, green: 0.2745098174, blue: 0.3019607961, alpha: 1)
-    
     timeframeTextField.inputView = timeframePicker
     classLevelTextField.inputView = classPicker
     attendanceNumberTextField.inputView = numberPicker
+
+    [timeframePicker, classPicker, numberPicker].forEach() {
+      $0.delegate = self
+      $0.dataSource = self
+    }
+    [timeframeTextField, classLevelTextField, attendanceNumberTextField, talkTextField].forEach() {$0?.delegate = self}
     
-    [timeframePicker, classPicker, numberPicker].forEach() {$0.delegate = self; $0.dataSource = self}
-    [timeframeTextField, classLevelTextField, attendanceNumberTextField].forEach() {$0.inputAccessoryView = toolbar}
+    timeframeTextField.addTarget(self, action: #selector(self.timeframeTextFieldDidChange), for: .editingChanged)
+    classLevelTextField.addTarget(self, action: #selector(self.classLevelTextFieldDidChange), for: .editingChanged)
+    attendanceNumberTextField.addTarget(self, action: #selector(self.attendanceNumberTextFieldDidChange), for: .editingChanged)
   }
   
   
   
-  //MARK: - Picker View *****************************************
+  //MARK: -Picker View *****************************************
   
   func numberOfComponents(in pickerView: UIPickerView) -> Int {
     return 1
@@ -63,21 +69,68 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
   }
   
   func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-    if pickerView.isEqual(timeframePicker) {timeframeTextField.text = Timeframe.selectionItems[row] }
-    if pickerView.isEqual(classPicker) {classLevelTextField.text =  Class.selectionItems[row] }
-    if pickerView.isEqual(numberPicker) {attendanceNumberTextField.text = Number.selectionItems[row] }
+    if pickerView.isEqual(timeframePicker) {
+      timeframeTextField.text = Timeframe.selectionItems[row]
+      timeframeTextFieldDidChange()
+    }
+    if pickerView.isEqual(classPicker) {
+      if Class.selectionItems[row] == Class.事務 {
+        attendanceNumberTextField.text = "0"
+        attendanceNumberTextField.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        attendanceNumberTextField.isEnabled = false
+      } else  {
+        attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+        attendanceNumberTextField.isEnabled = true
+      }
+      classLevelTextField.text =  Class.selectionItems[row]
+      classLevelTextFieldDidChange()
+    }
+    if pickerView.isEqual(numberPicker) {
+      attendanceNumberTextField.text = Number.selectionItems[row]
+      attendanceNumberTextFieldDidChange()
+    }
   }
   
   
+  
+  //MARK: -TextField View **************************************
+  @objc func timeframeTextFieldDidChange() {
+    guard let text = timeframeTextField.text else {return }
+    if Timeframe.selectionItems.firstIndex(of: text) == nil {
+      timeframeTextField.backgroundColor = #colorLiteral(red: 0.9408496618, green: 0.4808571339, blue: 0.4975002408, alpha: 1)
+    } else {
+      timeframeTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+  }
+  
+  @objc func classLevelTextFieldDidChange() {
+    guard let text = classLevelTextField.text else {return }
+    if Class.selectionItems.firstIndex(of: text) == nil {
+      classLevelTextField.backgroundColor = #colorLiteral(red: 0.9408496618, green: 0.4808571339, blue: 0.4975002408, alpha: 1)
+    } else {
+      classLevelTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+  }
+  
+  @objc func attendanceNumberTextFieldDidChange() {
+    guard let text = attendanceNumberTextField.text else {return }
+    if Number.selectionItems.firstIndex(of: text) == nil {
+      attendanceNumberTextField.backgroundColor = #colorLiteral(red: 0.9408496618, green: 0.4808571339, blue: 0.4975002408, alpha: 1)
+    } else {
+      attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
+    }
+  }
+  
+  
+  
+  //MARK: -User Actions ****************************************
   
   @objc func doneBarItemTapped() {
     resignAllFirstResponders()
   }
   
   
-  
-  
-  
+  //MARK: -Helper Methods **************************************
   
   func resignAllFirstResponders() {
     timeframeTextField.resignFirstResponder()

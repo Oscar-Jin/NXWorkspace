@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class LessonLogTVC: UITableViewController {
 
@@ -19,6 +20,15 @@ class LessonLogTVC: UITableViewController {
     
     self.navigationItem.rightBarButtonItem = self.editButtonItem
   }
+  
+  
+  override func viewWillDisappear(_ animated: Bool) {
+    
+    
+  }
+  
+  
+  
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
     if let lessonLogCell = tableView.cellForRow(at: indexPath) as? LessonLogCell {
