@@ -11,30 +11,59 @@ import Firebase
 
 class LessonLogTVC: UITableViewController {
 
-  var lessonLogs = [LessonLog]()
-
+  
   override func viewDidLoad() {
     super.viewDidLoad()
-   
-    lessonLogs.append(LessonLog(data: [String: Any]()) )
-    
     self.navigationItem.rightBarButtonItem = self.editButtonItem
-  }
-  
-  
-  override func viewWillDisappear(_ animated: Bool) {
     
+    print("currentLessonLogs.count", currentLessonLogs.count)
     
+    if currentLessonLogs.count == 0 {
+      indicator.showSpinner()
+      
+      let year = String(Calendar.current.component(.year, from: Date()))
+      let month = String(Calendar.current.component(.month, from: Date()))
+      let day = String(Calendar.current.component(.day, from: Date()))
+      
+      let query = Firestore.firestore().collection("company").document("001 - LACOMS").collection("lessonLog").whereField("instructorID", isEqualTo: currentUser!.documentID).whereField("year", isEqualTo: year).whereField("month", isEqualTo: month).whereField("day", isEqualTo: day)
+      
+      query.getDocuments { (snapshot, error) in
+        if let error = error { print(error); return }
+        if let snapshot = snapshot {
+          
+          if snapshot.documents.count == 0 {
+            print("snapshot.documents.count", snapshot.documents.count)
+            let workScheduel = currentUser!.getTodaysWorkSchedule()
+            workScheduel.forEach() {
+              currentLessonLogs.append(LessonLog(data: ["timeframe": $0]))
+            }
+
+          } else {
+            print("adding to currentLessonLogs")
+            snapshot.documents.forEach() {
+              currentLessonLogs.append( LessonLog(data: $0.data()) )
+            }
+
+          }
+          
+          currentLessonLogs.sort(by: { (left, right) -> Bool in
+            left.timeframe! < right.timeframe!
+          })
+          
+          indicator.removeSpinner()
+          
+          self.tableView.reloadData()
+        }
+      }
+    }
   }
-  
-  
-  
+
   
   override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    #warning("might add different type of cell in the future")
     if let lessonLogCell = tableView.cellForRow(at: indexPath) as? LessonLogCell {
       lessonLogCell.resignAllFirstResponders()
     }
-    #warning("might add different type of cell in the future")
   }
   
   
@@ -44,30 +73,33 @@ class LessonLogTVC: UITableViewController {
   
   // MARK: - Table view data source
   
-  override func numberOfSections(in tableView: UITableView) -> Int {
-    return 1
-  }
-  
   override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-    return lessonLogs.count
+    return currentLessonLogs.count
   }
   
   override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
     let cell = tableView.dequeueReusableCell(withIdentifier: "LessonLogCell", for: indexPath) as! LessonLogCell
+    
+    cell.lessonLog = currentLessonLogs[indexPath.row]
+    
     return cell
   }
   
+  
+  
+  
+  
   @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
-    lessonLogs.append(LessonLog(data: [String: Any]()) )
+    currentLessonLogs.append(LessonLog(data: [String: Any]()) )
     
     self.tableView.beginUpdates()
-    self.tableView.insertRows(at: [IndexPath(row: lessonLogs.count - 1, section: 0)], with: .automatic)
+    self.tableView.insertRows(at: [IndexPath(row: currentLessonLogs.count - 1, section: 0)], with: .automatic)
     self.tableView.endUpdates()
   }
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      lessonLogs.remove(at: indexPath.row)
+      currentLessonLogs.remove(at: indexPath.row)
       
       tableView.deleteRows(at: [indexPath], with: .fade)
     }
@@ -75,21 +107,4 @@ class LessonLogTVC: UITableViewController {
 
   
 
-  
-  
-  
-  //MARK: -
-  
-  
-  
-  /*
-   // MARK: - Navigation
-   
-   // In a storyboard-based application, you will often want to do a little preparation before navigation
-   override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destination.
-   // Pass the selected object to the new view controller.
-   }
-   */
-  
 }

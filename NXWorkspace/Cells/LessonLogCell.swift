@@ -42,6 +42,7 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     timeframeTextField.addTarget(self, action: #selector(self.timeframeTextFieldDidChange), for: .editingChanged)
     classLevelTextField.addTarget(self, action: #selector(self.classLevelTextFieldDidChange), for: .editingChanged)
     attendanceNumberTextField.addTarget(self, action: #selector(self.attendanceNumberTextFieldDidChange), for: .editingChanged)
+    talkTextField.addTarget(self, action: #selector(self.talkTextFieldEditingDidEnd), for: .editingDidEnd)
   }
   
   
@@ -76,7 +77,7 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     if pickerView.isEqual(classPicker) {
       if Class.selectionItems[row] == Class.事務 {
         attendanceNumberTextField.text = "0"
-        attendanceNumberTextField.backgroundColor = #colorLiteral(red: 0.921431005, green: 0.9214526415, blue: 0.9214410186, alpha: 1)
+        attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         attendanceNumberTextField.isEnabled = false
       } else  {
         attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
@@ -101,6 +102,8 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     } else {
       timeframeTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
+    
+    lessonLog.timeframe = timeframeTextField.text
   }
   
   @objc func classLevelTextFieldDidChange() {
@@ -110,6 +113,8 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     } else {
       classLevelTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
+    
+    lessonLog.classLevel = classLevelTextField.text
   }
   
   @objc func attendanceNumberTextFieldDidChange() {
@@ -119,6 +124,12 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
     } else {
       attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
     }
+    
+    lessonLog.attendanceNumber = attendanceNumberTextField.text
+  }
+  
+  @objc func talkTextFieldEditingDidEnd() {
+    lessonLog.talk = talkTextField.text
   }
   
   

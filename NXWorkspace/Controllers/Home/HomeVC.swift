@@ -10,8 +10,11 @@ import UIKit
 import Firebase
 
 var currentUser: User?
+var currentLessonLogs = [LessonLog]()
+var indicator = IndicatorView()
 
-class HomeViewController: UIViewController {
+class HomeViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+  
   @IBOutlet weak var nameLabel: UILabel!
   @IBOutlet weak var discriptionLabel: UILabel!
   @IBOutlet weak var userImageView: UIImageView!
@@ -35,7 +38,10 @@ class HomeViewController: UIViewController {
   
   @IBOutlet weak var infoImageView: UIImageView!
   
-  var indicator = IndicatorView()
+  @IBOutlet weak var classScheduleTableView: UITableView!
+  
+  
+  
   
   var timer0: Timer?
   var timer1: Timer?
@@ -213,6 +219,9 @@ class HomeViewController: UIViewController {
     
     setButtonsToHaveShadow()
     randomPicture()
+    
+    classScheduleTableView.delegate = self
+    classScheduleTableView.dataSource = self
   }
   
   
@@ -230,13 +239,8 @@ class HomeViewController: UIViewController {
   }
   
   @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-    indicator.showSpinner()
-    DispatchQueue.main.asyncAfter(deadline: .now() + 1.0) {
-      self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
-      self.indicator.removeSpinner()
-    }
+    self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
     
-    //
   }
   
   
@@ -262,8 +266,23 @@ class HomeViewController: UIViewController {
   }
   
   
+  //MARK: - Table View Delegates *******************************************
   
+  func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    return 4
+  }
   
+  func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    let cell = tableView.dequeueReusableCell(withIdentifier: "ClassTempelateCell", for: indexPath)
+    switch indexPath.row {
+    case 0: cell.textLabel?.text = "L4    Template"; cell.detailTextLabel?.text = Timeframe.time1300_1500
+    case 1: cell.textLabel?.text = "E    Template"; cell.detailTextLabel?.text = Timeframe.time1500_1700
+    case 2: cell.textLabel?.text = "GHI    Template"; cell.detailTextLabel?.text = Timeframe.time1730_1930
+    case 3: cell.textLabel?.text = "事務    Template"; cell.detailTextLabel?.text = Timeframe.time1930_2130
+    default: cell.textLabel?.text = nil; cell.detailTextLabel?.text = nil
+    }
+    return cell
+  }
   
   
   
@@ -295,6 +314,8 @@ extension HomeViewController {
     } else {
       user = nil
       timecard = nil
+      #warning("imcomplete implementation of currentLessonLog")
+      currentLessonLogs = []
       view.isHidden = true
       performSegue(withIdentifier: "showLoginViewSegue", sender: self)
     }
@@ -467,6 +488,10 @@ extension HomeViewController {
     }
   }
   
+  
+  func createTemplateLessonLog() {
+    
+  }
   
 
 

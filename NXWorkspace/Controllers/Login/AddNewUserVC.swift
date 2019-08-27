@@ -174,7 +174,7 @@ class AddNewUserVC: UIViewController, UITextFieldDelegate, UIPickerViewDelegate,
   // ********************************************************************
   
   
-  //MARK: - Firebase Set Data *******************************************
+  //MARK: - Table View Delegates ****************************************
   
   
   

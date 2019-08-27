@@ -124,4 +124,18 @@ extension User {
   var fullName: String {
     return lastName_Kanji + "  " + firstName_Kanji
   }
+  
+  func getTodaysWorkSchedule() -> [String] {
+    let week = Calendar.current.component(.weekday, from: Date())
+    
+    if week == 1 { return workOnSunday }
+    if week == 2 { return workOnMonday }
+    if week == 3 { return workOnTuesday }
+    if week == 4 { return workOnWednesday }
+    if week == 5 { return workOnThursday }
+    if week == 6 { return workOnFriday }
+    if week == 7 { return workOnSaturday }
+    
+    return []
+  }
 }
