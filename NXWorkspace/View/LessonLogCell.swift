@@ -55,7 +55,7 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
   
   func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
     if pickerView.isEqual(timeframePicker) {return Timeframe.selectionItems.count }
-    if pickerView.isEqual(classPicker) {return Class.selectionItems.count }
+    if pickerView.isEqual(classPicker) {return Class.selectionItems_Compact.count }
     if pickerView.isEqual(numberPicker) {return Number.selectionItems.count }
     
     return 0
@@ -63,7 +63,7 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
   
   func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
     if pickerView.isEqual(timeframePicker) {return Timeframe.selectionItems[row] }
-    if pickerView.isEqual(classPicker) {return Class.selectionItems[row] }
+    if pickerView.isEqual(classPicker) {return Class.selectionItems_Compact[row] }
     if pickerView.isEqual(numberPicker) {return Number.selectionItems[row] }
     
     return nil
@@ -75,15 +75,16 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
       timeframeTextFieldDidChange()
     }
     if pickerView.isEqual(classPicker) {
-      if Class.selectionItems[row] == Class.事務 {
+      if Class.selectionItems_Compact[row] == Class.事務 || Class.selectionItems_Compact[row] == Class.開発 {
         attendanceNumberTextField.text = "0"
         attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         attendanceNumberTextField.isEnabled = false
+        attendanceNumberTextFieldDidChange()
       } else  {
         attendanceNumberTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)
         attendanceNumberTextField.isEnabled = true
       }
-      classLevelTextField.text =  Class.selectionItems[row]
+      classLevelTextField.text =  Class.selectionItems_Compact[row]
       classLevelTextFieldDidChange()
     }
     if pickerView.isEqual(numberPicker) {
@@ -108,7 +109,7 @@ class LessonLogCell: UITableViewCell, UIPickerViewDelegate, UIPickerViewDataSour
   
   @objc func classLevelTextFieldDidChange() {
     guard let text = classLevelTextField.text else {return }
-    if Class.selectionItems.firstIndex(of: text) == nil {
+    if Class.selectionItems_Compact.firstIndex(of: text) == nil {
       classLevelTextField.backgroundColor = #colorLiteral(red: 0.9408496618, green: 0.4808571339, blue: 0.4975002408, alpha: 1)
     } else {
       classLevelTextField.backgroundColor = #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)

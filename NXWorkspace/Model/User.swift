@@ -31,6 +31,7 @@ class User {
   
   var password: String
   
+  
   var workOnMonday: [String] {
     didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnMonday": workOnMonday]) }
   }
@@ -52,6 +53,7 @@ class User {
   var workOnSunday: [String] {
     didSet { Firestore.firestore().collection("company").document("001 - LACOMS").collection("user").document(currentUser!.documentID).updateData(["workOnSunday": workOnSunday]) }
   }
+  
   
   init(data: [String: Any]) {
     lastName_Kanji = data["lastName_Kanji"] as? String ?? ""
@@ -83,8 +85,9 @@ class User {
     workOnSunday = data["workOnSunday"] as? [String] ?? []
   }
   
+  
   var documentData: [String: Any] {
-    let user: [String: Any] = [
+    let data: [String: Any] = [
       "lastName_Kanji": lastName_Kanji,
       "lastName_Hiragana": lastName_Hiragana,
       "firstName_Kanji": firstName_Kanji,
@@ -113,12 +116,21 @@ class User {
       "workOnSaturday": workOnSaturday as Any,
       "workOnSunday": workOnSunday as Any,
     ]
-    return user
+    
+    return data
   }
   
   
-  
+  // === User class decleration ends here ====
 }
+
+
+
+
+
+
+
+
 
 extension User {
   var fullName: String {

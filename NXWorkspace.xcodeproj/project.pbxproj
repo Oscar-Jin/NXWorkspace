@@ -12,6 +12,7 @@
 		0432ABA42304283D00A54096 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0432ABA22304283D00A54096 /* Main.storyboard */; };
 		0432ABA62304283F00A54096 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0432ABA52304283F00A54096 /* Assets.xcassets */; };
 		0432ABA92304283F00A54096 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0432ABA72304283F00A54096 /* LaunchScreen.storyboard */; };
+		043387B123262B2F0037B5E9 /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043387B023262B2F0037B5E9 /* AddNewUserVC.swift */; };
 		043D4A3A23066B8800B1F3D0 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3923066B8800B1F3D0 /* User.swift */; };
 		043D4A3E2306765A00B1F3D0 /* CompanySelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */; };
 		043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */; };
@@ -20,7 +21,6 @@
 		0466726D23136EE500F4D0B6 /* TimeSelectionTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466726C23136EE400F4D0B6 /* TimeSelectionTVC.swift */; };
 		0466726F23136F1C00F4D0B6 /* TimeSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0466726E23136F1C00F4D0B6 /* TimeSelectionCell.swift */; };
 		0482EDAF230A7AB4008EB07A /* LessonLogCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */; };
-		048B70A4230AACA60054EF26 /* AddNewUserVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 048B70A3230AACA60054EF26 /* AddNewUserVC.swift */; };
 		04969F9423065190008ACBFF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 04969F9323065190008ACBFF /* GoogleService-Info.plist */; };
 		04A58E59230BDF9200A63386 /* LessonLog.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A58E58230BDF9200A63386 /* LessonLog.swift */; };
 		04A58E5B230BEA2A00A63386 /* LessonLogTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04A58E5A230BEA2A00A63386 /* LessonLogTVC.swift */; };
@@ -28,8 +28,12 @@
 		04CBDAFC230522EC00717869 /* LoginVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFB230522EC00717869 /* LoginVC.swift */; };
 		04CBDAFE2305380400717869 /* UserSelectionVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFD2305380400717869 /* UserSelectionVC.swift */; };
 		04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDAFF230538F900717869 /* UserSelectionCell.swift */; };
-		04CBDB0923053E0300717869 /* Key.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0823053E0300717869 /* Key.swift */; };
-		04CBDB0D23053EB400717869 /* Text.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0C23053EB400717869 /* Text.swift */; };
+		04CBDB0923053E0300717869 /* Keys_Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0823053E0300717869 /* Keys_Internal.swift */; };
+		04CBDB0D23053EB400717869 /* Text_Internal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CBDB0C23053EB400717869 /* Text_Internal.swift */; };
+		04CE55F72326403400244C82 /* TimeRecordTVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE55F62326403400244C82 /* TimeRecordTVC.swift */; };
+		04CE55F92326492200244C82 /* TimeRecordCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE55F82326492200244C82 /* TimeRecordCell.swift */; };
+		04CE55FB23264BC900244C82 /* TimeRecordVM.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE55FA23264BC900244C82 /* TimeRecordVM.swift */; };
+		04CE55FD23265B3B00244C82 /* DateFormatter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CE55FC23265B3B00244C82 /* DateFormatter.swift */; };
 		04CEBC6A2310EBCB0050A371 /* IndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 04CEBC692310EBCB0050A371 /* IndicatorView.swift */; };
 		3D069CC22CA651793386BF59 /* Pods_NXWorkspace.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 014DEE1BDB6919380ADB93A8 /* Pods_NXWorkspace.framework */; };
 /* End PBXBuildFile section */
@@ -43,6 +47,7 @@
 		0432ABA52304283F00A54096 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0432ABA82304283F00A54096 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0432ABAA2304283F00A54096 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		043387B023262B2F0037B5E9 /* AddNewUserVC.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddNewUserVC.swift; sourceTree = "<group>"; };
 		043D4A3923066B8800B1F3D0 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionCell.swift; sourceTree = "<group>"; };
 		043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompanySelectionVC.swift; sourceTree = "<group>"; };
@@ -51,7 +56,6 @@
 		0466726C23136EE400F4D0B6 /* TimeSelectionTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionTVC.swift; sourceTree = "<group>"; };
 		0466726E23136F1C00F4D0B6 /* TimeSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeSelectionCell.swift; sourceTree = "<group>"; };
 		0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogCell.swift; sourceTree = "<group>"; };
-		048B70A3230AACA60054EF26 /* AddNewUserVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AddNewUserVC.swift; path = /Users/zhirenjin/Desktop/NXWorkspace/NXWorkspace/Controllers/Login/AddNewUserVC.swift; sourceTree = "<absolute>"; };
 		04969F9323065190008ACBFF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		04A58E58230BDF9200A63386 /* LessonLog.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = LessonLog.swift; path = ../LessonLog.swift; sourceTree = "<group>"; };
 		04A58E5A230BEA2A00A63386 /* LessonLogTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LessonLogTVC.swift; sourceTree = "<group>"; };
@@ -59,8 +63,12 @@
 		04CBDAFB230522EC00717869 /* LoginVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginVC.swift; sourceTree = "<group>"; };
 		04CBDAFD2305380400717869 /* UserSelectionVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserSelectionVC.swift; sourceTree = "<group>"; };
 		04CBDAFF230538F900717869 /* UserSelectionCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = UserSelectionCell.swift; path = ../UserSelectionCell.swift; sourceTree = "<group>"; };
-		04CBDB0823053E0300717869 /* Key.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Key.swift; sourceTree = "<group>"; };
-		04CBDB0C23053EB400717869 /* Text.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text.swift; sourceTree = "<group>"; };
+		04CBDB0823053E0300717869 /* Keys_Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Keys_Internal.swift; sourceTree = "<group>"; };
+		04CBDB0C23053EB400717869 /* Text_Internal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Text_Internal.swift; sourceTree = "<group>"; };
+		04CE55F62326403400244C82 /* TimeRecordTVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRecordTVC.swift; sourceTree = "<group>"; };
+		04CE55F82326492200244C82 /* TimeRecordCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRecordCell.swift; sourceTree = "<group>"; };
+		04CE55FA23264BC900244C82 /* TimeRecordVM.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeRecordVM.swift; sourceTree = "<group>"; };
+		04CE55FC23265B3B00244C82 /* DateFormatter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = DateFormatter.swift; path = ../DateFormatter.swift; sourceTree = "<group>"; };
 		04CEBC692310EBCB0050A371 /* IndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IndicatorView.swift; sourceTree = "<group>"; };
 		5BFF13C501018565028C082D /* Pods-NXWorkspace.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXWorkspace.debug.xcconfig"; path = "Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace.debug.xcconfig"; sourceTree = "<group>"; };
 		F12B97B945FDFC744468AD6A /* Pods-NXWorkspace.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-NXWorkspace.release.xcconfig"; path = "Pods/Target Support Files/Pods-NXWorkspace/Pods-NXWorkspace.release.xcconfig"; sourceTree = "<group>"; };
@@ -101,87 +109,107 @@
 			children = (
 				0432ABA22304283D00A54096 /* Main.storyboard */,
 				0432AB9E2304283D00A54096 /* AppDelegate.swift */,
-				04CBDB0423053B8B00717869 /* Controllers */,
-				04CBDB0323053B8100717869 /* Cells */,
-				04CBDB0523053CC300717869 /* Models */,
-				046672692310F33900F4D0B6 /* Views */,
+				04CBDB0523053CC300717869 /* Model */,
+				04CBDB0323053B8100717869 /* View */,
+				04CE55F12326368500244C82 /* ViewModel */,
+				04CBDB0423053B8B00717869 /* Controller */,
 				0432ABA52304283F00A54096 /* Assets.xcassets */,
 				0432ABA72304283F00A54096 /* LaunchScreen.storyboard */,
 				0432ABAA2304283F00A54096 /* Info.plist */,
 				04969F9323065190008ACBFF /* GoogleService-Info.plist */,
+				04CE55FE23265B3F00244C82 /* Extension */,
 			);
 			path = NXWorkspace;
 			sourceTree = "<group>";
 		};
-		0458D6132305507B00D1949A /* Home */ = {
+		0458D6132305507B00D1949A /* Home Screen */ = {
 			isa = PBXGroup;
 			children = (
 				0432ABA02304283D00A54096 /* HomeVC.swift */,
 				04A58E5A230BEA2A00A63386 /* LessonLogTVC.swift */,
 			);
-			path = Home;
+			path = "Home Screen";
 			sourceTree = "<group>";
 		};
-		046672692310F33900F4D0B6 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				04CEBC692310EBCB0050A371 /* IndicatorView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		04A58E5E230C04F900A63386 /* Settings */ = {
+		04A58E5E230C04F900A63386 /* Settings Pannel */ = {
 			isa = PBXGroup;
 			children = (
 				04A58E5C230C04E900A63386 /* SettingsTVC.swift */,
 				0466726A23120DDF00F4D0B6 /* MonthSelectionTVC.swift */,
 				0466726C23136EE400F4D0B6 /* TimeSelectionTVC.swift */,
 			);
-			path = Settings;
+			path = "Settings Pannel";
 			sourceTree = "<group>";
 		};
-		04CBDB0323053B8100717869 /* Cells */ = {
+		04CBDB0323053B8100717869 /* View */ = {
 			isa = PBXGroup;
 			children = (
 				0482EDAE230A7AB4008EB07A /* LessonLogCell.swift */,
 				04CBDAFF230538F900717869 /* UserSelectionCell.swift */,
 				0466726E23136F1C00F4D0B6 /* TimeSelectionCell.swift */,
 				043D4A3D2306765A00B1F3D0 /* CompanySelectionCell.swift */,
+				04CE55F82326492200244C82 /* TimeRecordCell.swift */,
+				04CEBC692310EBCB0050A371 /* IndicatorView.swift */,
 			);
-			path = Cells;
+			path = View;
 			sourceTree = "<group>";
 		};
-		04CBDB0423053B8B00717869 /* Controllers */ = {
+		04CBDB0423053B8B00717869 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				04CBDB0E23053F5E00717869 /* Login */,
-				0458D6132305507B00D1949A /* Home */,
-				04A58E5E230C04F900A63386 /* Settings */,
+				04CBDB0E23053F5E00717869 /* Login Screen */,
+				0458D6132305507B00D1949A /* Home Screen */,
+				04CE55F423263FE400244C82 /* Work Record Screen */,
+				04A58E5E230C04F900A63386 /* Settings Pannel */,
 			);
-			path = Controllers;
+			path = Controller;
 			sourceTree = "<group>";
 		};
-		04CBDB0523053CC300717869 /* Models */ = {
+		04CBDB0523053CC300717869 /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				043D4A3923066B8800B1F3D0 /* User.swift */,
 				043D4A652308F88D00B1F3D0 /* Timecard.swift */,
 				04A58E58230BDF9200A63386 /* LessonLog.swift */,
-				04CBDB0823053E0300717869 /* Key.swift */,
-				04CBDB0C23053EB400717869 /* Text.swift */,
+				04CBDB0C23053EB400717869 /* Text_Internal.swift */,
+				04CBDB0823053E0300717869 /* Keys_Internal.swift */,
 			);
-			path = Models;
+			path = Model;
 			sourceTree = "<group>";
 		};
-		04CBDB0E23053F5E00717869 /* Login */ = {
+		04CBDB0E23053F5E00717869 /* Login Screen */ = {
 			isa = PBXGroup;
 			children = (
 				04CBDAFB230522EC00717869 /* LoginVC.swift */,
 				04CBDAFD2305380400717869 /* UserSelectionVC.swift */,
 				043D4A3F23067F9E00B1F3D0 /* CompanySelectionVC.swift */,
-				048B70A3230AACA60054EF26 /* AddNewUserVC.swift */,
+				043387B023262B2F0037B5E9 /* AddNewUserVC.swift */,
 			);
-			path = Login;
+			path = "Login Screen";
+			sourceTree = "<group>";
+		};
+		04CE55F12326368500244C82 /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				04CE55FA23264BC900244C82 /* TimeRecordVM.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		04CE55F423263FE400244C82 /* Work Record Screen */ = {
+			isa = PBXGroup;
+			children = (
+				04CE55F62326403400244C82 /* TimeRecordTVC.swift */,
+			);
+			path = "Work Record Screen";
+			sourceTree = "<group>";
+		};
+		04CE55FE23265B3F00244C82 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				04CE55FC23265B3B00244C82 /* DateFormatter.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 		18CC133C655B7660B97345B3 /* Frameworks */ = {
@@ -328,23 +356,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				04CE55FD23265B3B00244C82 /* DateFormatter.swift in Sources */,
 				04CBDAFC230522EC00717869 /* LoginVC.swift in Sources */,
 				04CBDAFE2305380400717869 /* UserSelectionVC.swift in Sources */,
 				04A58E5B230BEA2A00A63386 /* LessonLogTVC.swift in Sources */,
+				043387B123262B2F0037B5E9 /* AddNewUserVC.swift in Sources */,
 				043D4A4023067F9E00B1F3D0 /* CompanySelectionVC.swift in Sources */,
 				043D4A662308F88D00B1F3D0 /* Timecard.swift in Sources */,
 				0466726D23136EE500F4D0B6 /* TimeSelectionTVC.swift in Sources */,
-				048B70A4230AACA60054EF26 /* AddNewUserVC.swift in Sources */,
+				04CE55F92326492200244C82 /* TimeRecordCell.swift in Sources */,
 				0466726F23136F1C00F4D0B6 /* TimeSelectionCell.swift in Sources */,
 				04CBDB00230538F900717869 /* UserSelectionCell.swift in Sources */,
 				0482EDAF230A7AB4008EB07A /* LessonLogCell.swift in Sources */,
 				04A58E59230BDF9200A63386 /* LessonLog.swift in Sources */,
+				04CE55F72326403400244C82 /* TimeRecordTVC.swift in Sources */,
 				0466726B23120DDF00F4D0B6 /* MonthSelectionTVC.swift in Sources */,
+				04CE55FB23264BC900244C82 /* TimeRecordVM.swift in Sources */,
 				0432ABA12304283D00A54096 /* HomeVC.swift in Sources */,
 				04A58E5D230C04E900A63386 /* SettingsTVC.swift in Sources */,
 				04CEBC6A2310EBCB0050A371 /* IndicatorView.swift in Sources */,
-				04CBDB0D23053EB400717869 /* Text.swift in Sources */,
-				04CBDB0923053E0300717869 /* Key.swift in Sources */,
+				04CBDB0D23053EB400717869 /* Text_Internal.swift in Sources */,
+				04CBDB0923053E0300717869 /* Keys_Internal.swift in Sources */,
 				043D4A3A23066B8800B1F3D0 /* User.swift in Sources */,
 				043D4A3E2306765A00B1F3D0 /* CompanySelectionCell.swift in Sources */,
 				0432AB9F2304283D00A54096 /* AppDelegate.swift in Sources */,

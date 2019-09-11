@@ -1,5 +1,5 @@
 //
-//  ClassLogTVC.swift
+//  LessonLogTableVC.swift
 //  NXWorkspace
 //
 //  Created by Zhiren Jin on 2019/08/20.
@@ -87,8 +87,6 @@ class LessonLogTVC: UITableViewController {
   
   
   
-  
-  
   @IBAction func addButtonTapped(_ sender: UIBarButtonItem) {
     currentLessonLogs.append(LessonLog(data: [String: Any]()) )
     
@@ -99,7 +97,8 @@ class LessonLogTVC: UITableViewController {
   
   override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
     if editingStyle == .delete {
-      currentLessonLogs.remove(at: indexPath.row)
+      let lessonLog = currentLessonLogs.remove(at: indexPath.row)
+      Firestore.firestore().collection("company").document("001 - LACOMS").collection("lessonLog").document(lessonLog.documentID!).delete()
       
       tableView.deleteRows(at: [indexPath], with: .fade)
     }

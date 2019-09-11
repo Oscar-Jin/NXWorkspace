@@ -18,9 +18,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
     // Override point for customization after application launch.
     FirebaseApp.configure()
-    window?.backgroundColor = .white
+    loadAppPreset(name: "LACOMS")
     
-    loadAppSettings()
+    window?.backgroundColor = .white
     
     return true
   }
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
   }
   
   
-  func loadAppSettings() {
+  func loadAppPreset(name: String) {
     Firestore.firestore().collection("company").document("001 - LACOMS").getDocument { (snapshot, error) in
       guard let snapshot = snapshot else {return}
       

@@ -239,8 +239,14 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   @IBAction func editButtonTapped(_ sender: UIBarButtonItem) {
-    self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
+    if timecard?.status == Status.退勤後 {
+      let alert =  UIAlertController(title: "既に退勤済です", message: "退勤後の編集はできません", preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+      present(alert, animated: true, completion: nil)
+      return
+    }
     
+    self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
   }
   
   
@@ -257,12 +263,7 @@ class HomeViewController: UIViewController, UITableViewDelegate, UITableViewData
   }
   
   @IBAction func offWorkButtonTapped(_ sender: UIButton) {
-    let alert =  UIAlertController(title: "本当に退勤しますか？", message: "やり忘れていることがないか、もう一度確認しましょう。" ,preferredStyle: .alert)
-    alert.addAction(UIAlertAction(title: "いいえ", style: .cancel, handler: nil))
-    alert.addAction(UIAlertAction(title: "はい", style: .destructive, handler: { _ in
-      self.offWorkNow()
-    }))
-    present(alert, animated: true, completion: nil)
+    checkAllLessonLogs()
   }
   
   
@@ -314,7 +315,6 @@ extension HomeViewController {
     } else {
       user = nil
       timecard = nil
-      #warning("imcomplete implementation of currentLessonLog")
       currentLessonLogs = []
       view.isHidden = true
       performSegue(withIdentifier: "showLoginViewSegue", sender: self)
@@ -335,6 +335,7 @@ extension HomeViewController {
     let day = String(Calendar.current.component(.day, from: Date()))
     let today = year + "_" + month + "_" + day
     
+    
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).getDocument { (snapshot, error) in
       guard let snapshot = snapshot, let timecardData = snapshot.data()?[fullName] as? [String: Timestamp] else {self.timecard = nil; return}
       self.timecard = Timecard(data: timecardData)
@@ -345,34 +346,33 @@ extension HomeViewController {
   
   func attendedNow() {
     guard let userFullName = UserDefaults.standard.string(forKey: "userFullName") else {return}
-
-    let year = String(Calendar.current.component(.year, from: Date()))
-    let month = String(Calendar.current.component(.month, from: Date()))
-    let day = String(Calendar.current.component(.day, from: Date()))
-    let today = year + "_" + month + "_" + day
+    let year = Calendar.current.component(.year, from: Date())
+    let month = Calendar.current.component(.month, from: Date())
+    let day = Calendar.current.component(.day, from: Date())
+    let today = String(year) + "_" + String(month) + "_" + String(day)
     
     var data = [String: Date]()
-    if let attendedAt = timecard?.attendedAt {data["出勤"] = attendedAt }
-    if let restStartsAt  = timecard?.restStartsAt {data["休憩"] = restStartsAt }
-    if let restEndsAt = timecard?.restEndsAt {data["再開"] = restEndsAt }
-    if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
-    
+    if let attendedAt = timecard?.attendedAt { data["出勤"] = attendedAt }
+    if let restStartsAt  = timecard?.restStartsAt { data["休憩"] = restStartsAt }
+    if let restEndsAt = timecard?.restEndsAt { data["再開"] = restEndsAt }
+    if let offworkAt = timecard?.offworkAt { data["退勤"] = offworkAt }
     
     data["出勤"] = Date()
-    timecard = Timecard(data: data)
-    print(today)
-    print("attendedNow: timecard updated")
+    
     
     Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).getDocument { (snapshot, error) in
-      if let _ = snapshot?.data() {
-        return
-      } else {
+      if let error = error { print(error); return }
+      if let _ = snapshot?.data() { return }
+      else {
         print("file not found. set new file")
-        Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).setData([userFullName: data])
+        Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).setData([userFullName: data, "year": year, "month": month, "day": day])
       }
     }
     
-    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
+    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data]) { (error) in
+      if let error = error { print(error); return }
+      self.timecard = Timecard(data: data)
+    }
   }
   
   func offWorkNow() {
@@ -390,9 +390,11 @@ extension HomeViewController {
     if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
     
     data["退勤"] = Date()
-    timecard = Timecard(data: data)
     
-    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
+    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data]) { (error) in
+      if let error = error { print(error); return }
+      self.timecard = Timecard(data: data)
+    }
   }
   
   func restStartNow() {
@@ -410,9 +412,12 @@ extension HomeViewController {
     if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
     
     data["休憩"] = Date()
-    timecard = Timecard(data: data)
+
+    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data]) { (error) in
+      if let error = error { print(error); return }
+      self.timecard = Timecard(data: data)
+    }
     
-    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
   }
   
   func restEndsNow() {
@@ -430,9 +435,11 @@ extension HomeViewController {
     if let offworkAt = timecard?.offworkAt {data["退勤"] = offworkAt }
     
     data["再開"] = Date()
-    timecard = Timecard(data: data)
     
-    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data])
+    Firestore.firestore().collection("company").document("001 - LACOMS").collection("timecard").document(today).updateData([userFullName: data]) { (error) in
+      if let error = error { print(error); return }
+      self.timecard = Timecard(data: data)
+    }
   }
   
   
@@ -489,8 +496,54 @@ extension HomeViewController {
   }
   
   
-  func createTemplateLessonLog() {
+  func checkAllLessonLogs() {
+    if currentLessonLogs.count == 0 {
+      let alert =  UIAlertController(title: "まだ勤務記録を書いていません！", message: "本日の勤務記録を書いてください。" ,preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+        self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
+      }))
+      present(alert, animated: true, completion: nil)
+      return
+    }
     
+    
+    currentLessonLogs.forEach() {
+      if $0.timeframe == nil || $0.classLevel == nil || $0.attendanceNumber == nil || $0.talk == nil || $0.timeframe == "" || $0.classLevel == "" || $0.attendanceNumber == "" || $0.talk == "" {
+
+        let alert =  UIAlertController(title: "記入漏れがあります！", message: "本日の勤務記録にまだ記入されていない項目がございます" ,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+          self.performSegue(withIdentifier: "showTalkViewSegue", sender: self)
+        }))
+        present(alert, animated: true, completion: nil)
+        return
+      }
+    }
+    
+    if currentLessonLogs.count < currentUser!.getTodaysWorkSchedule().count {
+      let alert =  UIAlertController(title: "警告：勤務記録の数が足りません", message: "本日記録した勤務記録の数が規定値に達していません。支給額に影響を及ぼす可能性があります。本当にこのまま退勤しますか？" ,preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "いいえ", style: .cancel, handler: { (_) in
+        return
+      }))
+      alert.addAction(UIAlertAction(title: "はい", style: .destructive, handler: { _ in
+        let alert =  UIAlertController(title: "本当に退勤しますか？", message: "やり忘れていることがないか、もう一度確認しましょう。" ,preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "いいえ", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: "はい", style: .destructive, handler: { _ in
+          self.offWorkNow()
+        }))
+        self.present(alert, animated: true, completion: nil)
+        
+      }))
+      present(alert, animated: true, completion: nil)
+    
+    } else {
+      let alert =  UIAlertController(title: "本当に退勤しますか？", message: "やり忘れていることがないか、もう一度確認しましょう。" ,preferredStyle: .alert)
+      alert.addAction(UIAlertAction(title: "いいえ", style: .cancel, handler: nil))
+      alert.addAction(UIAlertAction(title: "はい", style: .destructive, handler: { _ in
+        self.offWorkNow()
+      }))
+      present(alert, animated: true, completion: nil)
+      
+    }
   }
   
 
