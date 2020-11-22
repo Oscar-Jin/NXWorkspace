@@ -1,0 +1,6 @@
+framework module Pods_NXWorkspace {
+  umbrella header "Pods-NXWorkspace-umbrella.h"
+
+  export *
+  module * { export * }
+}
